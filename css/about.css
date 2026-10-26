@@ -1,0 +1,291 @@
+/* ============================================================
+   关于页自定义样式
+   - 所有选择器以 .k- 前缀并限定在 .k-about 内，不影响全站
+   - 颜色复用 fluid 主题变量，自动适配浅色 / 深色模式
+   ============================================================ */
+
+.k-about {
+  --k-accent: #3d7eff;
+  --k-accent-2: #8a5cf6;
+  --k-cards: var(--board-bg-color, #fff);
+  --k-border: var(--line-color, rgba(0, 0, 0, .1));
+  --k-text: var(--text-color, #333);
+  --k-text-sec: var(--sec-text-color, #7a7a7a);
+  --k-shadow: 0 6px 18px rgba(0, 0, 0, .05);
+  --k-radius: 14px;
+
+  margin-top: .5rem;
+  color: var(--k-text);
+  line-height: 1.85;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-user-color-scheme]) .k-about {
+    --k-accent: #6f9dff;
+    --k-accent-2: #a984ff;
+    --k-shadow: 0 6px 18px rgba(0, 0, 0, .28);
+  }
+}
+
+html[data-user-color-scheme="dark"] .k-about {
+  --k-accent: #6f9dff;
+  --k-accent-2: #a984ff;
+  --k-shadow: 0 6px 18px rgba(0, 0, 0, .28);
+}
+
+/* ---------- 引言 ---------- */
+.k-about .k-lead {
+  position: relative;
+  margin: 0 0 1.2rem;
+  padding: .1rem 0 .1rem 1rem;
+  font-size: 1.02rem;
+  color: var(--k-text-sec);
+}
+
+.k-about .k-lead::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .2rem;
+  bottom: .2rem;
+  width: 3px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--k-accent), var(--k-accent-2));
+}
+
+/* ---------- 小节标题 ---------- */
+.k-about .k-h2 {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  margin: 1.9rem 0 1rem;
+  padding: 0;
+  border: none;
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: var(--k-text);
+}
+
+.k-about .k-h2::before {
+  content: "";
+  width: 4px;
+  height: 1.05em;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--k-accent), var(--k-accent-2));
+}
+
+/* ---------- 兴趣标签 ---------- */
+.k-about .k-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.k-about .k-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  margin: 0;
+  padding: .45rem .9rem;
+  font-size: .92rem;
+  color: var(--k-text);
+  background: var(--k-cards);
+  border: 1px solid var(--k-border);
+  border-radius: 999px;
+  box-shadow: var(--k-shadow);
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+.k-about .k-chip i {
+  font-size: 1rem;
+  color: var(--k-accent);
+}
+
+.k-about .k-chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--k-accent);
+  box-shadow: 0 8px 20px rgba(61, 126, 255, .16);
+}
+
+/* ---------- 联系方式 ---------- */
+.k-about .k-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.k-about .k-link {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin: 0;
+  padding: .8rem 1rem;
+  color: var(--k-text) !important;
+  text-decoration: none !important;
+  background: var(--k-cards);
+  border: 1px solid var(--k-border);
+  border-radius: var(--k-radius);
+  box-shadow: var(--k-shadow);
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+.k-about .k-link i {
+  font-size: 1.2rem;
+  color: var(--k-accent);
+  transition: transform .22s ease;
+}
+
+.k-about .k-link:hover {
+  transform: translateY(-2px);
+  border-color: var(--k-accent);
+  box-shadow: 0 10px 24px rgba(61, 126, 255, .16);
+}
+
+.k-about .k-link:hover i {
+  transform: scale(1.12);
+}
+
+.k-about .k-link .k-txt {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35;
+}
+
+.k-about .k-link .k-name {
+  font-size: .95rem;
+  font-weight: 600;
+}
+
+.k-about .k-link .k-sub {
+  font-size: .76rem;
+  color: var(--k-text-sec);
+}
+
+/* ---------- 时间线 ---------- */
+.k-about .k-timeline {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+  list-style: none;
+}
+
+.k-about .k-timeline::before {
+  content: "";
+  position: absolute;
+  left: .34rem;
+  top: .45rem;
+  bottom: .6rem;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--k-accent), var(--k-accent-2));
+  opacity: .55;
+}
+
+.k-about .k-timeline > li {
+  position: relative;
+  margin: 0 0 1.15rem;
+  padding: 0;
+  list-style: none;
+}
+
+.k-about .k-timeline > li:last-child {
+  margin-bottom: 0;
+}
+
+.k-about .k-timeline > li::before {
+  content: "";
+  position: absolute;
+  left: -1.22rem;
+  top: .5rem;
+  width: .6rem;
+  height: .6rem;
+  border-radius: 50%;
+  background: var(--k-cards);
+  border: 2px solid var(--k-accent);
+  box-shadow: 0 0 0 3px rgba(61, 126, 255, .14);
+}
+
+.k-about .k-when {
+  font-size: .84rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--k-accent);
+}
+
+.k-about .k-what {
+  font-size: .95rem;
+  color: var(--k-text);
+}
+
+.k-about .k-what .k-dim {
+  color: var(--k-text-sec);
+}
+
+/* ---------- 本站技术栈 ---------- */
+.k-about .k-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem .9rem;
+  margin: 0;
+  padding: .9rem 1.1rem;
+  list-style: none;
+  font-size: .88rem;
+  color: var(--k-text-sec);
+  background: var(--k-cards);
+  border: 1px dashed var(--k-border);
+  border-radius: var(--k-radius);
+}
+
+.k-about .k-stack li {
+  margin: 0;
+  list-style: none;
+}
+
+.k-about .k-stack strong {
+  color: var(--k-text);
+  font-weight: 600;
+}
+
+/* ---------- 入场动画 ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .k-about .k-lead,
+  .k-about .k-h2,
+  .k-about .k-chips,
+  .k-about .k-links,
+  .k-about .k-timeline,
+  .k-about .k-stack {
+    animation: k-fade-up .5s ease both;
+  }
+
+  .k-about .k-h2:nth-of-type(2) { animation-delay: .06s; }
+  .k-about .k-h2:nth-of-type(3) { animation-delay: .12s; }
+
+  @keyframes k-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* ---------- 移动端 ---------- */
+@media (max-width: 575px) {
+  .k-about .k-links {
+    grid-template-columns: 1fr;
+  }
+
+  .k-about .k-h2 {
+    font-size: 1.05rem;
+  }
+}
